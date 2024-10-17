@@ -42,6 +42,16 @@ public class Task {
     )
     private Set<User> assignedUsers = new HashSet<>();
 
+
+    // Validation
+    @PrePersist
+    @PreUpdate
+    public void validateOwnership() {
+        if ((ownerUser == null && ownerGroup == null) || (ownerUser != null && ownerGroup != null)) {
+            throw new IllegalStateException("A task must have either an owner user or an owner group, but not both.");
+        }
+    }
+
     // Constructors
     public Task() {
     }
@@ -51,7 +61,7 @@ public class Task {
         this.status = status;
         this.dueDate = dueDate;
     }
-    
+
     // Getters and Setters
     public Long getId() {
         return id;
