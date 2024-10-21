@@ -26,6 +26,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.UNAUTHORIZED);
     }
 
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<?> accessDeniedException(AccessDeniedException ex) {
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), "Access Denied");
+        return new ResponseEntity<>(errorDetails, HttpStatus.FORBIDDEN);
+    }
     // ErrorDetails class
     static class ErrorDetails {
         private Date timestamp;
