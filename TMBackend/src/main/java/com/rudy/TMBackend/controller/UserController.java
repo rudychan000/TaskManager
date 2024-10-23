@@ -2,6 +2,7 @@ package com.rudy.TMBackend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.rudy.TMBackend.model.User;
 import com.rudy.TMBackend.service.UserService;
@@ -14,9 +15,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     //create a new user
     @PostMapping("/create")
     public User createUser(@RequestBody User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userService.saveUser(user);
     }
 
