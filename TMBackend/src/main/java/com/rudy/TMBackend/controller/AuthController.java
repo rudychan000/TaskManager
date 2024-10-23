@@ -3,6 +3,9 @@ package com.rudy.TMBackend.controller;
 import com.rudy.TMBackend.model.User;
 import com.rudy.TMBackend.repository.UserRepository;
 import com.rudy.TMBackend.security.JwtTokenProvider;
+
+import io.swagger.v3.oas.annotations.Operation;
+
 import com.rudy.TMBackend.payload.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,7 @@ public class AuthController {
 
     // User login
     @PostMapping("/login")
+    @Operation(summary = "Authenticate user")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
@@ -47,6 +51,7 @@ public class AuthController {
 
     // User registration
     @PostMapping("/register")
+    @Operation(summary = "Register a new user")
     public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signUpRequest) {
         // Check if username or email is already taken
         if(userRepository.existsByName(signUpRequest.getUsername())) {

@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity // This tells Hibernate to make a table out of this class
 public class Test {
     @Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
 	private String name;
