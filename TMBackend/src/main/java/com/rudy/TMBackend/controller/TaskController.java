@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import com.rudy.TMBackend.model.*;
 import com.rudy.TMBackend.service.TaskService;
+
+import io.swagger.v3.oas.annotations.Operation;
+
 import com.rudy.TMBackend.security.UserPrincipal;
 import java.util.*;
 
@@ -17,6 +20,7 @@ public class TaskController {
     private TaskService taskService;
 
     // Create a private task
+    @Operation(summary = "Create a private task")
     @PostMapping("/private")
     public ResponseEntity<?> createPrivateTask(
             @RequestBody Task task,
@@ -28,6 +32,7 @@ public class TaskController {
 
     // Create a public task
     @PostMapping("/public/{groupId}")
+    @Operation(summary = "Create a public task")
     public ResponseEntity<?> createPublicTask(
             @PathVariable Long groupId,
             @RequestBody Task task,
@@ -39,6 +44,7 @@ public class TaskController {
     }
 
     // Assign users to a public task
+    @Operation(summary = "Assign users to a public task")
     @PostMapping("/{taskId}/assign")
     public ResponseEntity<?> assignUsersToTask(
             @PathVariable Long taskId,
@@ -50,6 +56,7 @@ public class TaskController {
     }
 
     // Get tasks for the authenticated user
+    @Operation(summary = "Get tasks for the authenticated user")
     @GetMapping("/my-tasks")
     public ResponseEntity<?> getTasksForUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
         List<Task> tasks = taskService.getTasksForUser(userPrincipal.getId());
