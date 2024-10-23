@@ -4,14 +4,20 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Unique identifier of the task", example = "1")
     private Long id;
+    @Schema(description = "Name of the user", example = "Alice")
     private String name;
+    @Schema(description = "Email of the user", example = "example@gmail.com")
     private String email;
+    @Schema(description = "Password of the user", example = "encrypted_password")
     private String password;
 
     // Many-to-Many with Group

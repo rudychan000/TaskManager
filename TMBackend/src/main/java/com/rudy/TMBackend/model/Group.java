@@ -4,14 +4,18 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Entity
-@Table(name = "groups")
+@Table(name = "tm_groups")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Unique identifier of the task", example = "1")
     private Long id;
 
     // Fields
+    @Schema(description = "Name of the group", example = "Project Team")
     private String name;
 
     // Many-to-Many with User

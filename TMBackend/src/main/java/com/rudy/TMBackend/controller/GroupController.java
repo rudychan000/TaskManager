@@ -11,13 +11,13 @@ import com.rudy.TMBackend.security.UserPrincipal;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/tasks")
+@RequestMapping("/api/groups")
 public class GroupController {
      @Autowired
     private GroupService groupService;
 
     // Create a new group
-    @PostMapping
+    @PostMapping("create")
     public ResponseEntity<?> createGroup(
             @RequestBody Map<String, String> request,
             @AuthenticationPrincipal UserPrincipal userPrincipal) {

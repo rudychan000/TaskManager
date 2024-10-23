@@ -5,22 +5,29 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Entity
 @Table(name = "tasks")
 public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Unique identifier of the task", example = "1")
     private Long id;
 
     // Fields
+    @Schema(description = "Title of the task", example = "Complete Project")
     private String title;
+    @Schema(description = "Description of the task", example = "Finish the task management project")
     private String description;
 
     @Enumerated(EnumType.STRING)
+    @Schema(description = "Status of the task", example = "PENDING")
     private TaskStatus status;
 
     @Temporal(TemporalType.DATE)
+    @Schema(description = "Due date of the task", example = "2024.12.31")
     private Date dueDate;
 
     // Many-to-One with User (for private tasks)

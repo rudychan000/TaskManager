@@ -68,7 +68,7 @@
 			<version>0.11.5</version>
 			<scope>runtime</scope>
 		</dependency>
-			<!-- BCrypt Password Encoder -->
+		<!-- BCrypt Password Encoder -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-crypto</artifactId>
@@ -83,7 +83,12 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		
+		<!-- Springdoc OpenAPI UI -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.6.0</version>
+   		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
