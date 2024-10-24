@@ -1,6 +1,9 @@
 package com.rudy.TMBackend.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +12,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
 @Table(name = "tasks")
+@Getter
+@Setter
 public class Task {
 
     @Id
@@ -70,53 +75,53 @@ public class Task {
     }
 
     // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    public TaskStatus getStatus() {
-        return status;
-    }
-    public void setStatus(TaskStatus status) {
-        this.status = status;
-    }
-    public Date getDueDate() {
-        return dueDate;
-    }
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
-    }
-    public User getOwnerUser() {
-        return ownerUser;
-    }
-    public void setOwnerUser(User ownerUser) {
-        this.ownerUser = ownerUser;
-    }
-    public Group getOwnerGroup() {
-        return ownerGroup;
-    }
-    public void setOwnerGroup(Group ownerGroup) {
-        this.ownerGroup = ownerGroup;
-    }
-    public Set<User> getAssignedUsers() {
-        return assignedUsers;
-    }
-    public void setAssignedUsers(Set<User> assignedUsers) {
-        this.assignedUsers = assignedUsers;
-    }
+    // public Long getId() {
+    //     return id;
+    // }
+    // public void setId(Long id) {
+    //     this.id = id;
+    // }
+    // public String getTitle() {
+    //     return title;
+    // }
+    // public void setTitle(String title) {
+    //     this.title = title;
+    // }
+    // public String getDescription() {
+    //     return description;
+    // }
+    // public void setDescription(String description) {
+    //     this.description = description;
+    // }
+    // public TaskStatus getStatus() {
+    //     return status;
+    // }
+    // public void setStatus(TaskStatus status) {
+    //     this.status = status;
+    // }
+    // public Date getDueDate() {
+    //     return dueDate;
+    // }
+    // public void setDueDate(Date dueDate) {
+    //     this.dueDate = dueDate;
+    // }
+    // public User getOwnerUser() {
+    //     return ownerUser;
+    // }
+    // public void setOwnerUser(User ownerUser) {
+    //     this.ownerUser = ownerUser;
+    // }
+    // public Group getOwnerGroup() {
+    //     return ownerGroup;
+    // }
+    // public void setOwnerGroup(Group ownerGroup) {
+    //     this.ownerGroup = ownerGroup;
+    // }
+    // public Set<User> getAssignedUsers() {
+    //     return assignedUsers;
+    // }
+    // public void setAssignedUsers(Set<User> assignedUsers) {
+    //     this.assignedUsers = assignedUsers;
+    // }
 }
 
