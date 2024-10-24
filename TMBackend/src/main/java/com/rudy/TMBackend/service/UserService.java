@@ -25,10 +25,10 @@ public class UserService {
     }
 
     public User getUserByName(String name) {
-        return userRepository.findByName(name);
+        return userRepository.findByName(name).orElse(null);
     }
 
     public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return userRepository.findByEmail(email).orElse(null);
     }
 }
