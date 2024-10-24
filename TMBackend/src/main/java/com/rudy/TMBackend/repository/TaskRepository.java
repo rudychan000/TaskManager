@@ -13,7 +13,7 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
     // Public tasks owned by a group
     List<Task> findByOwnerGroup(Group ownerGroup);
 
-    // Tasks assigned to a user
+    // Tasks assigned to a user(only public tasks)
     List<Task> findByAssignedUsersContains(User user);
 
     // Tasks assigned to a user within a group

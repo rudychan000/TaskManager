@@ -27,12 +27,25 @@ public class GroupService {
         return groupRepository.save(group);
     }
 
+    // Get all groups
+    public List<Group> getAllGroups() {
+        return groupRepository.findAll();
+    }
+
+    // Get group by id
+    public Group getGroupById(Long groupId) {
+        return groupRepository.findById(groupId)
+                .orElseThrow(() -> new ResourceNotFoundException("Group not found"));
+    }
+
+
+
     // Add user to group
-    public Group addUserToGroup(Long groupId, Long userId, Long currentUserId) {
+    public Group addUserToGroup(Long groupId, Long userId) {
         Group group = groupRepository.findById(groupId)
                 .orElseThrow(() -> new ResourceNotFoundException("Group not found"));
 
-        // Optional: Check if current user has permission to add users
+
         User userToAdd = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
@@ -41,7 +54,7 @@ public class GroupService {
     }
     // Remove user from group
     // TODO remove user assignment from tasks
-    public Group removeUserFromGroup(Long groupId, Long userId, Long currentUserId) {
+    public Group removeUserFromGroup(Long groupId, Long userId) {
         Group group = groupRepository.findById(groupId)
                 .orElseThrow(() -> new ResourceNotFoundException("Group not found"));
         User userToRemove = userRepository.findById(userId)

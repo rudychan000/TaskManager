@@ -39,7 +39,7 @@ public class GroupController {
             @PathVariable Long userId,
             @AuthenticationPrincipal UserPrincipal userPrincipal) {
 
-        Group updatedGroup = groupService.addUserToGroup(groupId, userId, userPrincipal.getId());
+        Group updatedGroup = groupService.addUserToGroup(groupId, userId);
         return ResponseEntity.ok(updatedGroup);
     }
 
@@ -51,7 +51,7 @@ public class GroupController {
             @PathVariable Long userId,
             @AuthenticationPrincipal UserPrincipal userPrincipal) {
 
-        Group updatedGroup = groupService.removeUserFromGroup(groupId, userId, userPrincipal.getId());
+        Group updatedGroup = groupService.removeUserFromGroup(groupId, userId);
         return ResponseEntity.ok(updatedGroup);
     }
 
