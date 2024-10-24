@@ -3,6 +3,8 @@ package com.rudy.TMBackend.service;
 import com.rudy.TMBackend.model.*;
 import com.rudy.TMBackend.repository.*;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -74,7 +76,7 @@ public class UserServiceTest {
 
     @Test
     public void testGetUserByEmailNotFound() {
-        when(userRepository.findByEmail("user1email")).thenReturn(null);
+        when(userRepository.findByEmail("user1email")).thenReturn(Optional.empty());
         User user = userService.getUserByEmail("user1email");
         assertNull(user);
     }
@@ -88,7 +90,7 @@ public class UserServiceTest {
 
     @Test
     public void testGetUserByNameNotFound() {
-        when(userRepository.findByName("Alice")).thenReturn(null);
+        when(userRepository.findByName("Alice")).thenReturn(Optional.empty());
         User user = userService.getUserByName("Alice");
         assertNull(user);
     }
@@ -110,7 +112,7 @@ public class UserServiceTest {
 
     @Test
     public void testGetUserByEmailEmpty() {
-        when(userRepository.findByEmail("user1email")).thenReturn(null);
+        when(userRepository.findByEmail("user1email")).thenReturn(Optional.empty());
         User user = userService.getUserByEmail("user1email");
         assertNull(user);
     }
@@ -124,7 +126,7 @@ public class UserServiceTest {
 
     @Test
     public void testGetUserByNameEmpty() {
-        when(userRepository.findByName("Alice")).thenReturn(null);
+        when(userRepository.findByName("Alice")).thenReturn(Optional.empty());
         User user = userService.getUserByName("Alice");
         assertNull(user);
     }
