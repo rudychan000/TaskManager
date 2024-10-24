@@ -42,6 +42,10 @@ public class Group {
     public Group(String name) {
         this.name = name;
     }
+    public Group(String name, Set<User> users) {
+        this.name = name;
+        this.users = users;
+    }
     // Getters and Setters
     // public Long getId() {
     //     return id;
