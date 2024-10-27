@@ -62,4 +62,12 @@ public class TaskController {
         List<Task> tasks = taskService.getTasksForUser(userPrincipal.getId());
         return ResponseEntity.ok(tasks);
     }
+
+    // Get task by id
+    @Operation(summary = "Get task by id")
+    @GetMapping("/{taskId}")
+    public ResponseEntity<?> getTaskById(@PathVariable Long taskId) {
+        Task task = taskService.getTaskById(taskId);
+        return ResponseEntity.ok(task);
+    }
 }

@@ -74,6 +74,12 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
+    // Get a task by id
+    public Task getTaskById(Long taskId){
+        return taskRepository.findById(taskId)
+                .orElseThrow(() -> new ResourceNotFoundException("Task not found"));
+    }
+
     // Get tasks for a user (both private and assigned public tasks)
     public List<Task> getTasksForUser(Long userId) {
         User user = userRepository.findById(userId)
