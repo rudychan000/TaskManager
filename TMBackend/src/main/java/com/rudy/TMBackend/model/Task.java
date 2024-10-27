@@ -32,7 +32,7 @@ public class Task {
     private TaskStatus status;
 
     @Temporal(TemporalType.DATE)
-    @Schema(description = "Due date of the task", example = "2024.12.31")
+    @Schema(description = "Due date of the task", example = "2024-12-31")
     private Date dueDate;
 
     // Many-to-One with User (for private tasks)
