@@ -1,35 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 
 const GroupPage = () => {
     const [groups, setGroups] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchGroups = async () => {
-            try {
-                const response = await axios.get('/api/groups');
-                setGroups(response.data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchGroups();
-    }, []);
-
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
+        axiosInstance
+          .get('/groups/my-groups')
+          .then((response) => setGroups(response.data))
+          .catch((error) => console.error('Error fetching groups:', error));
+      }, []);
 
     return (
         <div>
             <h1>Groups</h1>
             <ul>
                 {groups.map(group => (
-                    <li key={group.id}>{group.name}</li>
+                    <li key={group.id}>
+                    <a href={`/groups/${group.id}`}>{group.name}</a>
+                  </li>
                 ))}
             </ul>
         </div>
