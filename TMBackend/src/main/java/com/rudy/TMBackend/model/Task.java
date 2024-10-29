@@ -8,6 +8,11 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
@@ -37,16 +42,25 @@ public class Task {
 
     // Many-to-One with User (for private tasks)
     @ManyToOne
+    @JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class, 
+    property = "id")
     @JoinColumn(name = "owner_user_id")
     private User ownerUser;
 
     // Many-to-One with Group (for group tasks)
     @ManyToOne
+    @JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class, 
+    property = "id")
     @JoinColumn(name = "owner_group_id")
     private Group ownerGroup;
 
     // Many-to-Many with User (assigned users)
     @ManyToMany
+    @JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class, 
+    property = "id")
     @JoinTable(
         name = "task_user",
         joinColumns = @JoinColumn(name = "task_id"),
