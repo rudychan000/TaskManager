@@ -62,4 +62,20 @@ public class GroupController {
         List<Group> groups = groupService.getGroupsForUser(userPrincipal.getId());
         return ResponseEntity.ok(groups);
     }
+
+    // Get group by id
+    @GetMapping("/{groupId}")
+    @Operation(summary = "Get group by id")
+    public ResponseEntity<?> getGroupById(@PathVariable Long groupId) {
+        Group group = groupService.getGroupById(groupId);
+        return ResponseEntity.ok(group);
+    }
+
+    // Get all groups
+    @GetMapping("/all")
+    @Operation(summary = "Get all groups")
+    public ResponseEntity<?> getAllGroups() {
+        List<Group> groups = groupService.getAllGroups();
+        return ResponseEntity.ok(groups);
+    }
 }

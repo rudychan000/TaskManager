@@ -95,6 +95,20 @@ public class TaskService {
         return new ArrayList<>(allTasks);
     }
 
+    // Get private tasks for a user
+    public List<Task> getPrivateTasksForUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        return taskRepository.findByOwnerUser(user);
+    }
+
+    // Get public tasks for a user
+    public List<Task> getPublicTasksForUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        return taskRepository.findByAssignedUsersContains(user);
+    }
+
     // Get tasks for a group (public tasks)
     public List<Task> getTasksForGroup(Long groupId) {
         Group group = groupRepository.findById(groupId)

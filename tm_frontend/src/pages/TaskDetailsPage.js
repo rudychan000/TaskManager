@@ -19,7 +19,7 @@ const TaskDetailsPage = () => {
 
   return (
     <div>
-      <h2>Title: {task.title}</h2>
+      <p>Title: {task.title}</p>
       <p>Description: {task.description}</p>
       <p>Status: {task.status}</p>
       <p>Due Date: {task.dueDate}</p>

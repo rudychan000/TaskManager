@@ -6,8 +6,11 @@ import Dashboard from '../pages/Dashboard';
 import TasksPage from '../pages/TasksPage';
 import TaskDetailsPage from '../pages/TaskDetailsPage';
 import GroupsPage from '../pages/GroupsPage';
+import GroupDetailsPage from '../pages/GroupDetailsPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import PrivateRoute from './PrivateRoute';
+import CreateTaskPage from '../pages/CreateTaskPage';
+import AllGroupsPage from '../pages/AllGroupsPage';
 
 const AppRoutes = () => {
   return (
@@ -22,7 +25,10 @@ const AppRoutes = () => {
           <Route path="/" element={<Dashboard />} />
           <Route path="/tasks" element={<TasksPage />} />
           <Route path="/tasks/:id" element={<TaskDetailsPage />} />
+          <Route path="/tasks/create" element={<CreateTaskPage/>} />
           <Route path="/groups" element={<GroupsPage />} />
+          <Route path="/groups/:id" element={<GroupDetailsPage />} />
+          <Route path="/allGroups" element={<AllGroupsPage/>} />
         </Route>
 
         {/* 404 Not Found */}

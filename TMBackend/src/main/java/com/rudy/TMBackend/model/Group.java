@@ -7,6 +7,10 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
@@ -25,6 +29,9 @@ public class Group {
 
     // Many-to-Many with User
     @ManyToMany
+    @JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class, 
+    property = "id")
     @JoinTable(
         name = "user_group",
         joinColumns = @JoinColumn(name = "group_id"),
@@ -34,6 +41,9 @@ public class Group {
 
     // One-to-Many with Task (for tasks owned by the group)
     @OneToMany(mappedBy = "ownerGroup")
+    @JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class, 
+    property = "id")
     private Set<Task> tasks = new HashSet<>();
 
     // Constructors

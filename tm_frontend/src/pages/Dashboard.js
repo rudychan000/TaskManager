@@ -1,14 +1,26 @@
 import React from 'react';
+import { Button, Typography, Box } from '@mui/material';
 
 const Dashboard = () => {
   return (
-    <div>
-      <h2>Welcome to the Task Management App</h2>
-      {/* Links to tasks and groups */}
-      <a href="/tasks">My Tasks</a>
+    <Box>
+      <Typography variant="h4" gutterBottom>
+        Welcome to the Task Management App
+      </Typography>
+      <Button variant="contained" color="primary" href="/tasks">
+        My Tasks
+      </Button>
       <br />
-      <a href="/groups">My Groups</a>
-    </div>
+      <br />
+      <Button variant="contained" color="primary" href="/groups">
+        My Groups
+      </Button>
+      <br />
+      <br />
+      <Button variant="contained" color="primary" href="/allGroups">
+        All Groups
+      </Button>
+    </Box>
   );
 };
 

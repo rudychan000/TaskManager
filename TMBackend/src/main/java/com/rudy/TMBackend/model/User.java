@@ -7,6 +7,10 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
@@ -27,14 +31,23 @@ public class User {
 
     // Many-to-Many with Group
     @ManyToMany(mappedBy = "users")
+    @JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class, 
+    property = "id")
     private Set<Group> groups = new HashSet<>();
 
     // Many-to-Many with Task (for assigned tasks)
     @ManyToMany(mappedBy = "assignedUsers")
+    @JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class, 
+    property = "id")
     private Set<Task> assignedTasks = new HashSet<>();
 
     // One-to-Many with Task (for private tasks)
     @OneToMany(mappedBy = "ownerUser")
+    @JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class, 
+    property = "id")
     private Set<Task> ownedTasks = new HashSet<>();
 
     // Constructors

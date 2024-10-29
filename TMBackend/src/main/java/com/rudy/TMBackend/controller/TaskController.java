@@ -63,6 +63,22 @@ public class TaskController {
         return ResponseEntity.ok(tasks);
     }
 
+    // Get private tasks for the authenticated user
+    @Operation(summary = "Get private tasks for the authenticated user")
+    @GetMapping("/my-private-tasks")
+    public ResponseEntity<?> getPrivateTasksForUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
+        List<Task> tasks = taskService.getPrivateTasksForUser(userPrincipal.getId());
+        return ResponseEntity.ok(tasks);
+    }
+
+    // Get public tasks for the authenticated user
+    @Operation(summary = "Get public tasks for the authenticated user")
+    @GetMapping("/my-public-tasks")
+    public ResponseEntity<?> getPublicTasksForUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
+        List<Task> tasks = taskService.getPublicTasksForUser(userPrincipal.getId());
+        return ResponseEntity.ok(tasks);
+    }
+
     // Get task by id
     @Operation(summary = "Get task by id")
     @GetMapping("/{taskId}")
