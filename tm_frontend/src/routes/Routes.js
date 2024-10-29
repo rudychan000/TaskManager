@@ -8,6 +8,7 @@ import TaskDetailsPage from '../pages/TaskDetailsPage';
 import GroupsPage from '../pages/GroupsPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import PrivateRoute from './PrivateRoute';
+import CreateTaskPage from '../pages/CreateTaskPage';
 
 const AppRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const AppRoutes = () => {
           <Route path="/" element={<Dashboard />} />
           <Route path="/tasks" element={<TasksPage />} />
           <Route path="/tasks/:id" element={<TaskDetailsPage />} />
+          <Route path="/tasks/create" element={<CreateTaskPage/>} />
           <Route path="/groups" element={<GroupsPage />} />
         </Route>
 
