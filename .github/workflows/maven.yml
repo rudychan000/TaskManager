@@ -19,6 +19,22 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_DATABASE: tm_database
+          MYSQL_USER: tm_user
+          MYSQL_PASSWORD: tm123
+          MYSQL_ROOT_PASSWORD: rootpassword
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -u root -prootpassword"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+    
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 21
@@ -27,9 +43,7 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    # Add a step to install MySQL client
-    - name: Install MySQL client
-      run: sudo apt-get update && sudo apt-get install -y mysql-client
+  
     
     - name: Build with Maven
       run: mvn -B package --file TMBackend/pom.xml
