@@ -46,7 +46,8 @@ jobs:
   
     
     - name: Build with Maven
-      run: mvn -B package --file TMBackend/pom.xml
+      run: mvn -B package --file pom.xml
+      working-directory: TMBackend
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
