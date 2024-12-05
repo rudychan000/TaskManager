@@ -14,7 +14,7 @@ const LoginPage = () => {
       };
 
     try {
-    const response = await axios.post('http://localhost:8080/api/auth/login', data);
+    const response = await axios.post('http://57.180.86.229:8080/api/auth/login', data);
 
       // Save the access token
       localStorage.setItem('accessToken', response.data.accessToken);
