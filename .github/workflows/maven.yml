@@ -49,6 +49,6 @@ jobs:
       run: mvn -B package --file pom.xml
       working-directory: TMBackend
 
-     - name: Run Tests
+    - name: Run Tests
       run: mvn -B test --file pom.xml
       working-directory: TMBackend
