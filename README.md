@@ -3,7 +3,7 @@ To start the frontend service: ```sudo systemctl start nginx```
 Rebuild the frontend: 
 ``` 
 npm run build
-sudo cp -r build /var/www/react-app
+sudo cp -r /home/ec2-user/TaskManager/tm_frontend/build/* /var/www/react-app
 sudo systemctl restart nginx
 ```
 
