@@ -18,7 +18,7 @@ const LoginPage = () => {
 
       // Save the access token
       localStorage.setItem('accessToken', response.data.accessToken);
-
+      localStorage.setItem('userName',usernameOrEmail);
       // Redirect to dashboard
       window.location.href = '/';
     } catch (error) {
