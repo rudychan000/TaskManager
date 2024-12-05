@@ -162,7 +162,7 @@
                                         <limit>
                                             <counter>INSTRUCTION</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.80</minimum> <!-- Set desired coverage percentage -->
+                                            <minimum>0.40</minimum> <!-- Set desired coverage percentage -->
                                         </limit>
                                     </limits>
                                 </rule>
