@@ -1,3 +1,7 @@
+# Structure of this application
+![Structure of this application](resource/structure.png)
+
+### EC2 service related documentation
 To start the frontend service: ```sudo systemctl start nginx```
 
 Rebuild the frontend: 
